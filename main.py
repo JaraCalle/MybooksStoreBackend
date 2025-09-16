@@ -1,8 +1,22 @@
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, HTTPException
 from models import Book
 import crud
 
 app = FastAPI(title="Books API")
+
+
+app = FastAPI(title="Books API")
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/books")
 def read_books():
