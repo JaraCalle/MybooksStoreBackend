@@ -18,6 +18,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.get("/")
+def index():
+    return {"msg": "API running healthy"}
+
 @app.get("/books")
 def read_books():
     return crud.get_all_books()
